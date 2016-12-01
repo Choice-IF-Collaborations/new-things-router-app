@@ -1,13 +1,8 @@
-# node-express-template
+# new-things-router-app
 
 ## What is this?
-A boilerplate template for a Node.js app. Includes:
+This is a digital prototype that sets out to help people understand key information about their broadband network, router and the devices that they own. 
 
-* Express
-* Jade
-* Socket.io
-* reset.css
-* jQuery 1.12.2
+##About this collaboration
 
-## Todo
-* Add Sass
+This collaboration with CHOICE, the leading consumer advocacy organisation in Australia, builds on our prototype 'The Log'. IF are working with CHOICE members to find out what products they use and what they want to know about them. We're responding to these needs and testing our assumptions by making digital prototypes.
