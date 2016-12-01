@@ -1,1 +1,72 @@
-include index.html
+doctype html
+html(lang="en")
+  head
+    title IF–CHOICE Router App
+    meta(name="viewport" charset="utf-8" content="width=device-width" initial-scale="1.0")
+    script(type="text/javascript" src="/public/javascripts/jquery.js")
+    script(type="text/javascript" src="/public/javascripts/app.js")
+    link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700")
+    link(rel="stylesheet" type="text/css" href="/public/stylesheets/app.css")
+  body
+    div(id="outer_container")
+      div(id="container")
+        div(id="passive_view")
+          div(id="performance_value")
+            div
+              p(id="value") –
+              p(id="caption") connection quality
+          div(id="performance_graph")
+            div(id="top")
+            div(id="bottom")
+          div(id="device_map")
+            div(id="device_wrapper")
+        div(id="notification_bar")
+          a(href="#") #[span(class="alert_icon") !]#[span(class="message") Show latest activity]
+        div(id="active_view")
+          div(id="nav")
+            p Latest Activity
+            a(id="close_insights" href="#") Close
+          div(id="content")
+            div(id="feed")
+              div(class="feed_item")
+                h2 A new phone has connected to your network.
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your router is still using its default settings.
+                h3 This is a line of secondary text
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your phone is usually connected.
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your network is in heavy use.
+                h3 Too many connections at the same time will impact how well your products work.
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your Internet connection will be slower than usual for the next 3 hours.
+                h3 It's slowest on weekdays between 6pm and 8pm.
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your Internet connection has been lost. It was working for 2 days.
+                p(class="timestamp") Just now
+              div(class="feed_item")
+                h2 Your Internet connection is slower than ususal.
+                h3 There is high noise on your phone line.
+                p(class="timestamp") Just now
+            div(id="raw_data")
+              div(class="data_point")
+                div
+                  h2 Download Speed
+                  p 15 Mbps
+              div(class="data_point")
+                div
+                  h2 Upload Speed
+                  p 3 Mbps
+              div(class="data_point")
+                div
+                  h2 Last Disconnected
+                  p 15 hours ago
+              div(class="data_point")
+                div
+                  h2 Network In Use
+                  p 52%
