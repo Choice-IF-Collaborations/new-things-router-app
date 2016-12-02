@@ -16,28 +16,42 @@ $(window).load(function() {
   let broadbandPerformance = 0.0;           // Percentage
 
   // DUMMY DATA
-  addDevice(0, "Ian's iPhone", "phone", true);
-  addDevice(1, "Ian's Tablet", "tablet", true);
-  addDevice(2, "Ian's Laptop", "laptop", true);
-  addDevice(3, "Living Room", "tv", false);
+
 
   // Receive payload of new information
   socket.on('payload', function (data) {
     // Update network data points
     actualUploadSpeed = data.upload_speed;
     actualDownloadSpeed = data.download_speed;
+    actualUptime = data.uptime;
+    actualNetworkUsage = data.network_usage;
+
+    clearDevices();
+
+    // Add connected devices
+    for (let device in data.connected_devices) {
+      let thisDevice = data.connected_devices[device];
+      addDevice(deviceIDCounter, thisDevice.label, thisDevice.type, true);
+    }
+
+    // Add disconnected devices
+    for (let device in data.disconnected_devices) {
+      let thisDevice = data.disconnected_devices[device];
+      addDevice(deviceIDCounter, thisDevice.label, thisDevice.type, false);
+    }
 
     // Update raw data labels
     $('#data_download_speed p').text(actualDownloadSpeed + " Mbps");
     $('#data_upload_speed p').text(actualUploadSpeed + " Mbps");
-
+    $('#data_uptime p').text(actualUptime + " ago");
+    $('#data_network_usage p').text(actualNetworkUsage + " %");
     drawPerformanceGraph();
   });
 
   // Broadband speed functions
   function updateAdvertisedUploadSpeed(_uploadSpeed, _downloadSpeed) {
-    advertisedUploadSpeed = _uploadSpeed;
-    advertisedDownloadSpeed = _downloadSpeed;
+    advertisedUploadSpeed = _UploadSpeed;
+    advertisedDownloadSpeed = _DownloadSpeed;
   }
 
   function drawPerformanceGraph() {
@@ -95,6 +109,12 @@ $(window).load(function() {
     }
 
     deviceIDCounter++;
+  }
+
+  function clearDevices() {
+    devices = [];
+
+    $('#device_map #device_wrapper').empty();
   }
 
   function connectDevice(id) {

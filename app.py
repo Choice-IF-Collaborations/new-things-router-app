@@ -23,11 +23,8 @@ def send_payload():
 
     payload = json.dumps(payload)
 
-    print(payload)
-
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.sendto(payload, (UDP_IP, UDP_PORT))
-
 
 def get_download_speed():
     result = 11
@@ -63,7 +60,7 @@ def get_connected_devices():
     }
 
     test_device_3 = {
-        "label": "Ian's Laptop",
+        "label": "Phil's Laptop",
         "type": "laptop",
         "mac_address": "AB:CD:EF:01:23:45"
     }
