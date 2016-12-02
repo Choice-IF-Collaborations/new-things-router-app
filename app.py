@@ -1,15 +1,17 @@
 import json
 import socket
+import time
 
 # Config
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 
-# while True:
-    # Do stuff later
-
 def main():
-    send_payload()
+    print("Python daemon started")
+
+    while True:
+        print("Payload sent")
+        time.sleep(2)
 
 def send_payload():
     payload = {
@@ -25,6 +27,7 @@ def send_payload():
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.sendto(payload, (UDP_IP, UDP_PORT))
+
 
 def get_download_speed():
     result = 11
