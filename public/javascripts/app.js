@@ -1,30 +1,47 @@
 $(window).load(function() {
-
+  // Config
   const DEFAULT_NOTIFICATION_TEXT = "Show latest activity";
 
-  // Broadband performance
-  // ((Actual upload speed + Actual download speed) / (Expected upload speed + Expected download speed)) * 100
-  // All in Mbps
+  // Runtime variables
+  var socket = io();
+  let performanceGraphAnimateSpeed = 0;
+  let deviceIDCounter = 0;
+  let devices = [];
 
-  let uploadSpeed = 0.0;
-  let downloadSpeed = 0.0;
-  let broadbandPerformance = 0.0;
+  // Network data points
+  let actualUploadSpeed = 0.0;              // In Mbps
+  let advertisedUploadSpeed = 5.0;          // In Mbps
+  let actualDownloadSpeed = 0.0;            // In Mbps
+  let advertisedDownloadSpeed = 30.0;       // In Mbps
+  let broadbandPerformance = 0.0;           // Percentage
 
-  let advertisedUploadSpeed = 5.0;
-  let advertisedDownloadSpeed = 30.0
+  // DUMMY DATA
+  addDevice(0, "Ian's iPhone", "phone", true);
+  addDevice(1, "Ian's Tablet", "tablet", true);
+  addDevice(2, "Ian's Laptop", "laptop", true);
+  addDevice(3, "Living Room", "tv", false);
 
+  // Receive payload of new information
+  socket.on('payload', function (data) {
+    // Update network data points
+    actualUploadSpeed = data.upload_speed;
+    actualDownloadSpeed = data.download_speed;
+
+    // Update raw data labels
+    $('#data_download_speed p').text(actualDownloadSpeed + " Mbps");
+    $('#data_upload_speed p').text(actualUploadSpeed + " Mbps");
+
+    drawPerformanceGraph();
+  });
+
+  // Broadband speed functions
   function updateAdvertisedUploadSpeed(_uploadSpeed, _downloadSpeed) {
     advertisedUploadSpeed = _uploadSpeed;
     advertisedDownloadSpeed = _downloadSpeed;
   }
 
-  let performanceGraphAnimateSpeed = 0;
-
-  function updateBroadbandPerformance(_uploadSpeed, _downloadSpeed) {
-    uploadSpeed = _uploadSpeed;
-    downloadSpeed = _downloadSpeed;
-
-    broadbandPerformance = ((uploadSpeed + downloadSpeed) / (advertisedUploadSpeed + advertisedDownloadSpeed) * 100);
+  function drawPerformanceGraph() {
+    broadbandPerformance = ((actualUploadSpeed + actualDownloadSpeed) / (advertisedUploadSpeed + advertisedDownloadSpeed) * 100);
 
     let performanceRemainder = 100.0 - broadbandPerformance;
     let topHeight = (parseFloat($('#performance_graph').height()) * performanceRemainder) / 100.0;
@@ -46,20 +63,7 @@ $(window).load(function() {
     }
   }
 
-  updateBroadbandPerformance(3, 15);
-
-  setTimeout(function() {
-    updateBroadbandPerformance(1, 3);
-
-    setTimeout(function() {
-      updateBroadbandPerformance(5, 27);
-
-      setTimeout(function() {
-        updateBroadbandPerformance(4, 22);
-      }, 3000);
-    }, 3000);
-  }, 3000);
-
+  // Notification functions
   function createNotification(message) {
     $('#notification_bar').addClass('alert');
     $('#notification_bar a .message').text(message);
@@ -70,17 +74,7 @@ $(window).load(function() {
     $('#notification_bar a .message').text(DEFAULT_NOTIFICATION_TEXT);
   }
 
-
-  let deviceIDCounter = 0;
-  let devices = [];
-
-  addDevice(0, "Ian's iPhone", "phone", true);
-  addDevice(1, "Ian's Tablet", "tablet", true);
-  addDevice(2, "Ian's Laptop", "laptop", true);
-  addDevice(3, "Living Room", "tv", false);
-
-
-
+  // Network mapping
   function addDevice(id, label, type, is_connected) {
     devices.push({
       'id': id,
@@ -99,6 +93,8 @@ $(window).load(function() {
     if (!is_connected) {
       disconnectDevice(id);
     }
+
+    deviceIDCounter++;
   }
 
   function connectDevice(id) {
@@ -131,6 +127,7 @@ $(window).load(function() {
     $('#device_' + id).remove();
   }
 
+  // Click events
   $('#notification_bar a').click(function(e) {
     e.preventDefault();
 

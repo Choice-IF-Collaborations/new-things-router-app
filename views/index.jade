@@ -4,6 +4,7 @@ html(lang="en")
     title IF–CHOICE Router App
     meta(name="viewport" charset="utf-8" content="width=device-width" initial-scale="1.0")
     script(type="text/javascript" src="/public/javascripts/jquery.js")
+    script(type="text/javascript" src="/public/javascripts/socket.io.js")
     script(type="text/javascript" src="/public/javascripts/app.js")
     link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700")
     link(rel="stylesheet" type="text/css" href="/public/stylesheets/app.css")
@@ -54,19 +55,19 @@ html(lang="en")
                 h3 There is high noise on your phone line.
                 p(class="timestamp") Just now
             div(id="raw_data")
-              div(class="data_point")
+              div(id="data_download_speed" class="data_point")
                 div
                   h2 Download Speed
                   p 15 Mbps
-              div(class="data_point")
+              div(id="data_upload_speed" class="data_point")
                 div
                   h2 Upload Speed
                   p 3 Mbps
-              div(class="data_point")
+              div(id="data_uptime" class="data_point")
                 div
                   h2 Last Disconnected
                   p 15 hours ago
-              div(class="data_point")
+              div(id="data_network_usage" class="data_point")
                 div
                   h2 Network In Use
                   p 52%
