@@ -94,7 +94,7 @@ $(window).load(function() {
       'is_connected': is_connected
     });
 
-    $('#device_map #device_wrapper').append('<div id="device_' + id + '" class="device"><p></p></div>');
+    $('#device_map #device_wrapper').append('<div id="device_' + id + '" class="device"><div class="offline_symbol"></div><p></p></div>');
 
     $('#device_' + id + ' p').text(label);
     $('#device_' + id).css({
@@ -115,7 +115,9 @@ $(window).load(function() {
   }
 
   function connectDevice(id) {
-    $('#device_' + id).css({ 'opacity': 1 });
+    $('#device_' + id + ' .offline_symbol').css({ 'opacity': 0 });
+    $('#device_' + id + ' p').css({ 'opacity': 1 });
+
 
     for (var device in devices) {
       if (devices[device].id === id) {
@@ -125,7 +127,8 @@ $(window).load(function() {
   }
 
   function disconnectDevice(id) {
-    $('#device_' + id).css({ 'opacity': 0.4 });
+    $('#device_' + id + ' .offline_symbol').css({ 'opacity': 1 });
+    $('#device_' + id + ' p').css({ 'opacity': 0.5 });
 
     for (var device in devices) {
       if (devices[device].id === id) {
