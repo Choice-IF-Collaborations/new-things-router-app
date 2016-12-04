@@ -22,7 +22,6 @@ app.get('/', function(req, res) {
 
 // SOCKET.IO
 io.on('connection', function (socket) {
-	console.log("hello");
 });
 
 server.on('message', function(message) {
