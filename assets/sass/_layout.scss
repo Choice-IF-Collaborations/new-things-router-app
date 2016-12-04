@@ -7,7 +7,7 @@ $red_dark: #8a2818;
 
 /* Sizes */
 $notification-bar-height: 2.5em;
-$raw-data-height: 3.5em;
+$raw-data-height: 0em;
 
 body {
   font-family:'robotoregular', 'Helvetica Neue', 'Arial', sans-serif;
@@ -212,6 +212,7 @@ a {
     }
 
     #raw_data {
+      display:none;
       height:calc(#{$raw-data-height} - 2px);
       width:100%;
       border-top:#CCC 2px solid;
