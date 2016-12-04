@@ -1,6 +1,6 @@
 $(window).load(function() {
   // Config
-  const DEFAULT_NOTIFICATION_TEXT = "Show latest activity";
+  const DEFAULT_NOTIFICATION_TEXT = "Tap for latest activity";
 
   // Runtime variables
   var socket = io();
@@ -78,7 +78,6 @@ $(window).load(function() {
   function createNotification(message) {
     $('#notification_bar').addClass('alert');
     $('#notification_bar a .message').text(message);
-    $('#notification_bar a .message').append('<span style="font-size:0.75em; font-weight:700; margin-left:1em; text-transform:uppercase;">More info</span>');
   }
 
   function resetNotification() {
@@ -165,6 +164,6 @@ $(window).load(function() {
   });
 
   setTimeout(function() {
-    createNotification("Poor line quality is slowing down your connection speed.");
-  }, 5000);
+    createNotification("Poor line quality is slowing down your connection speed. Tap for more information.");
+  }, 0);
 });
