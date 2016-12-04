@@ -9,10 +9,10 @@ $(window).load(function() {
   let devices = [];
 
   // Network data points
-  let actualUploadSpeed = 0;                // In Mbps
-  let advertisedUploadSpeed = 0;            // In Mbps
-  let actualDownloadSpeed = 0;              // In Mbps
-  let advertisedDownloadSpeed = 0.0;        // In Mbps
+  let actualUploadSpeed = 1;                // In Mbps
+  let advertisedUploadSpeed = 5;            // In Mbps
+  let actualDownloadSpeed = 5;              // In Mbps
+  let advertisedDownloadSpeed = 30;         // In Mbps
   let broadbandPerformance = 0.0;           // Percentage
   let actualUptime = 0;                     // Miliseconds
   let actualNetworkUsage = 0;               // Percentage
@@ -49,6 +49,12 @@ $(window).load(function() {
 
     drawPerformanceGraph();
   });
+
+  // DEMO ONLY
+  drawPerformanceGraph();
+  addDevice(1, "Bill's Phone", "phone", true);
+  addDevice(2, "Jill's Tablet", "tablet", true);
+  addDevice(3, "Lounge TV", "TV", false);
 
   // Broadband speed functions
   function drawPerformanceGraph() {
