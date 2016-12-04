@@ -9,17 +9,21 @@ $(window).load(function() {
   let devices = [];
 
   // Network data points
-  let actualUploadSpeed = 0.5;              // In Mbps
-  let advertisedUploadSpeed = 5.0;          // In Mbps
-  let actualDownloadSpeed = 3.0;            // In Mbps
-  let advertisedDownloadSpeed = 30.0;       // In Mbps
+  let actualUploadSpeed = 0;                // In Mbps
+  let advertisedUploadSpeed = 0;            // In Mbps
+  let actualDownloadSpeed = 0;              // In Mbps
+  let advertisedDownloadSpeed = 0.0;        // In Mbps
   let broadbandPerformance = 0.0;           // Percentage
+  let actualUptime = 0;                     // Miliseconds
+  let actualNetworkUsage = 0;               // Percentage
 
   // Receive payload of new information
   socket.on('payload', function (data) {
     // Update network data points
-    // actualUploadSpeed = data.upload_speed;
-    // actualDownloadSpeed = data.download_speed;
+    actualUploadSpeed = data.actual_upload_speed;
+    actualDownloadSpeed = data.actual_download_speed;
+    advertisedUploadSpeed = data.advertised_upload_speed;
+    advertisedDownloadSpeed = data.advertised_download_speed;
     actualUptime = data.uptime;
     actualNetworkUsage = data.network_usage;
 
@@ -47,11 +51,6 @@ $(window).load(function() {
   });
 
   // Broadband speed functions
-  function updateAdvertisedUploadSpeed(_uploadSpeed, _downloadSpeed) {
-    advertisedUploadSpeed = _UploadSpeed;
-    advertisedDownloadSpeed = _DownloadSpeed;
-  }
-
   function drawPerformanceGraph() {
     broadbandPerformance = ((actualUploadSpeed + actualDownloadSpeed) / (advertisedUploadSpeed + advertisedDownloadSpeed) * 100);
 
