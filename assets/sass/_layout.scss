@@ -164,13 +164,13 @@ a {
       width:$notification-bar-height;
       height:$notification-bar-height;
       display:block;
-      background-image:url('/public/images/close.svg');
+      background-image:url('/public/images/back-arrow.svg');
       background-size: 70% 70%;
       background-position: center center;
       background-repeat: no-repeat;
       position:absolute;
       top: 0;
-      right: 0;
+      left: 0;
       text-indent: -9999px;
     }
   }
