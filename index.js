@@ -8,15 +8,6 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
-const spawn = require('child_process').spawn;
-
-// Load Python daemon
-const ls = spawn('python', ['app.py']);
-
-ls.stdout.on('data', function(data) {
-	console.log("hello");
-  console.log(String(data));
-});
 
 // CONFIG
 app.set('port', process.env.PORT || 3000);
