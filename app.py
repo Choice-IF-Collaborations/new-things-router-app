@@ -7,6 +7,7 @@ import time
 # Config
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
+db_connection = sqlite3.connect('log.db')
 
 
 def main():
@@ -16,9 +17,14 @@ def main():
 
 
 def send_payload():
+    actual_download_speed = get_actual_download_speed()
+    actual_upload_speed = get_actual_upload_speed()
+
+    log_actual_speeds(actual_upload_speed, actual_download_speed)
+
     payload = {
-        "actual_download_speed": get_actual_download_speed(),
-        "actual_upload_speed": get_actual_upload_speed(),
+        "actual_download_speed": actual_download_speed,
+        "actual_upload_speed": actual_upload_speed,
         "advertised_download_speed": get_advertised_download_speed(),
         "advertised_upload_speed": get_advertised_upload_speed(),
         "uptime": get_uptime(),
@@ -33,6 +39,21 @@ def send_payload():
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.sendto(payload, (UDP_IP, UDP_PORT))
+
+
+def log_actual_speeds(upload_speed, download_speed):
+    cursor = db_connection.cursor()
+    timestamp = int(time.time())
+
+    insert_sql_command = "INSERT INTO broadband_speed(upload_speed, download_speed, timestamp) VALUES ({0}, {1}, '{2}')".format(
+        upload_speed,
+        download_speed,
+        timestamp
+    )
+
+    cursor.execute(insert_sql_command)
+
+    db_connection.commit()
 
 
 def get_actual_download_speed():
