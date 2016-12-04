@@ -263,21 +263,20 @@ a {
   }
 
   &.alert {
-    background-color:$orange;
 
     a {
-      color: #FFF;
+      color: #000;
     }
 
     .alert_icon {
       display: inline-block;
-      background: #FFF;
+      background: $orange;
       width: 1.25em;
       height: 1.25em;
       line-height: 1.25em;
       border-radius: 1.25em;
       margin-right: 0.5em;
-      color: $orange;
+      color: #FFF;
     }
   }
 }
