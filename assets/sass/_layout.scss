@@ -10,7 +10,7 @@ $notification-bar-height: 2.5em;
 $raw-data-height: 3.5em;
 
 body {
-  font-family:'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family:'robotoregular', 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -72,12 +72,12 @@ a {
       #value {
         font-size:8em;
         margin-bottom:0.1em;
-        font-weight:500;
+        font-family:'robotomedium';
       }
 
       #caption {
         font-size:1.4em;
-        font-weight:500;
+        font-family:'robotomedium';
       }
     }
   }
@@ -157,7 +157,7 @@ a {
     p {
       line-height:$notification-bar-height;
       text-align:center;
-      font-weight:500;
+      font-family:'robotomedium';
     }
 
     a {
@@ -226,13 +226,13 @@ a {
 
         h2 {
           font-size:0.8em;
-          font-weight:500;
+          font-family:'robotomedium';
           margin-bottom: 0.5em;
         }
 
         .value {
           font-size: 2.5em;
-          font-weight: 700;
+          font-family:'robotobold';
           margin-right: 0.1em;
         }
 

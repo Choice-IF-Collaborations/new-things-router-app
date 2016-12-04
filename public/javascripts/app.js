@@ -9,20 +9,17 @@ $(window).load(function() {
   let devices = [];
 
   // Network data points
-  let actualUploadSpeed = 0.0;              // In Mbps
+  let actualUploadSpeed = 0.5;              // In Mbps
   let advertisedUploadSpeed = 5.0;          // In Mbps
-  let actualDownloadSpeed = 0.0;            // In Mbps
+  let actualDownloadSpeed = 3.0;            // In Mbps
   let advertisedDownloadSpeed = 30.0;       // In Mbps
   let broadbandPerformance = 0.0;           // Percentage
-
-  // DUMMY DATA
-
 
   // Receive payload of new information
   socket.on('payload', function (data) {
     // Update network data points
-    actualUploadSpeed = data.upload_speed;
-    actualDownloadSpeed = data.download_speed;
+    // actualUploadSpeed = data.upload_speed;
+    // actualDownloadSpeed = data.download_speed;
     actualUptime = data.uptime;
     actualNetworkUsage = data.network_usage;
 
@@ -41,10 +38,11 @@ $(window).load(function() {
     }
 
     // Update raw data labels
-    $('#data_download_speed p').text(actualDownloadSpeed + " Mbps");
-    $('#data_upload_speed p').text(actualUploadSpeed + " Mbps");
+    $('#data_download_speed p').text(actualDownloadSpeed.toFixed(2) + " Mbps");
+    $('#data_upload_speed p').text(actualUploadSpeed.toFixed(2) + " Mbps");
     $('#data_uptime p').text(actualUptime + " ago");
     $('#data_network_usage p').text(actualNetworkUsage + " %");
+
     drawPerformanceGraph();
   });
 
@@ -81,6 +79,7 @@ $(window).load(function() {
   function createNotification(message) {
     $('#notification_bar').addClass('alert');
     $('#notification_bar a .message').text(message);
+    $('#notification_bar a .message').append('<span style="font-size:0.75em; font-weight:700; margin-left:1em; text-transform:uppercase;">More info</span>');
   }
 
   function resetNotification() {
@@ -165,4 +164,8 @@ $(window).load(function() {
       $(this).hide()
     });
   });
+
+  setTimeout(function() {
+    createNotification("Poor line quality is slowing down your connection speed.");
+  }, 5000);
 });
