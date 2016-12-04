@@ -22,10 +22,13 @@ The code in this repository is intended to be further developed to enable actual
 
 2. Install Node.js dependencies using `npm install`.
 
-3. Compile the SASS stylesheets by running `npm run watch`. In development, keep this script running to update the stylesheets as changes are made. In production, close the script using `CTRL + C`.
+3. Create a new blank logging database by using `cp log.db.empty log.db`
 
-4. Run the Node.js app using `node index.js`.
+4. Compile the SASS stylesheets by running `npm run watch`. In development, keep this script running to update the stylesheets as changes are made. In production, close the script using `CTRL + C`.
 
-5. In another Terminal window, run `python app.py` to start the background daemon.
+5. Run the Node.js app using `node index.js`.
 
-6. The interface can be accessed at `http://localhost:3000`.
+6. In another Terminal window, run `python app.py` to start the background daemon.
+
+7. The interface can be accessed at `http://localhost:3000`.
+
