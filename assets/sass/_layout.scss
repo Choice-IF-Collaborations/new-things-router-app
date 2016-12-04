@@ -200,18 +200,24 @@ a {
         font-size: 1.2em;
         padding: 0.75em 20% 0.75em 20%;
 
-        h2, h3 {
+        h2, h3, p {
           margin-bottom: 0.5em;
           line-height:1.2;
         }
 
-        h3 {
+        h3, p {
           font-size:0.8em;
         }
 
         .timestamp {
           color:#AAA;
           font-size:0.8em;
+        }
+
+        &.critical {
+          h2 {
+            color:$orange;
+          }
         }
 
         &:first-child {
