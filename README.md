@@ -32,3 +32,25 @@ The code in this repository is intended to be further developed to enable actual
 
 7. The interface can be accessed at `http://localhost:3000`.
 
+## Data
+
+### What data points does this need access to?
+
+* Advertised upload speed
+* Actual upload speed
+* Advertised download speed
+* Actual download speed
+* Devices currently connected to the network (MAC address, name, type of device)
+* Line quality
+* ISP name
+* ISP contact phone number
+* Router username and password
+* Maximum router bandwidth
+* Bandwidth used by each device
+* Internet connection uptime
+
+### What data points does this need to store?
+
+* History of internet connection speeds
+* History of connected devices, including when they are connected and how long
+* History of broadband connections and disconnections
