@@ -173,6 +173,6 @@ $(window).load(function() {
   });
 
   setTimeout(function() {
-    createNotification("Poor line quality is slowing down your connection speed. Tap for more information.");
+    createNotification("Find out more");
   }, 0);
 });
