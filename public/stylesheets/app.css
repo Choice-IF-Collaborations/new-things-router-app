@@ -76,7 +76,7 @@ a {
 
 #container {
   width: 800px;
-  height: 480px;
+  height: 478px;
   background: #FFF;
   border-radius: 4px;
   overflow: hidden; }
@@ -249,13 +249,3 @@ a {
     border-radius: 1.25em;
     margin-right: 0.5em;
     color: #FFF; }
-
-@media (min-width: 800px) {
-  #outer_container {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-  #container {
-    width: 1000px;
-    height: 600px;
-    background: #FFF; } }
