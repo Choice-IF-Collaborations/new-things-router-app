@@ -48,7 +48,7 @@ a {
 
 #passive_view {
   width:100%;
-  height:calc(100% - #{$notification-bar-height});
+  height:calc(100%);
   background: #FF0000;
   position:relative;
 
