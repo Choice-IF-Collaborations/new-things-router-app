@@ -26,10 +26,31 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: 'robotoregular';
+  src: url("/public/fonts/Roboto-Regular-webfont.eot");
+  src: url("/public/fonts/Roboto-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/public/fonts/Roboto-Regular-webfont.woff") format("woff"), url("/public/fonts/Roboto-Regular-webfont.ttf") format("truetype"), url("/public/fonts/Roboto-Regular-webfont.svg#robotoregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("/public/fonts/Roboto-Medium-webfont.eot");
+  src: url("/public/fonts/Roboto-Medium-webfont.eot?#iefix") format("embedded-opentype"), url("/public/fonts/Roboto-Medium-webfont.woff") format("woff"), url("/public/fonts/Roboto-Medium-webfont.ttf") format("truetype"), url("/public/fonts/Roboto-Medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'robotobold';
+  src: url("/public/fonts/Roboto-Bold-webfont.eot");
+  src: url("/public/fonts/Roboto-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("/public/fonts/Roboto-Bold-webfont.woff") format("woff"), url("/public/fonts/Roboto-Bold-webfont.ttf") format("truetype"), url("/public/fonts/Roboto-Bold-webfont.svg#robotobold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 /* Default colours */
 /* Sizes */
 body {
-  font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'robotoregular', 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -63,7 +84,7 @@ a {
 #passive_view {
   width: 100%;
   height: calc(100% - 2.5em);
-  background: #FFF;
+  background: #FF0000;
   position: relative; }
   #passive_view #performance_value {
     position: absolute;
@@ -71,20 +92,22 @@ a {
     left: 0;
     width: 100%;
     height: 21.5em;
-    text-align: center;
     color: #000;
-    display: flex;
+    display: block;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    margin-left: 5em;
+    color: #FFF; }
     #passive_view #performance_value.critical {
       color: #FFF; }
     #passive_view #performance_value div #value {
-      font-size: 8em;
-      margin-bottom: 0.1em;
-      font-weight: 500; }
+      font-size: 6em;
+      margin-bottom: 0.4em;
+      margin-top: 1em;
+      font-family: 'robotomedium'; }
     #passive_view #performance_value div #caption {
-      font-size: 1.4em;
-      font-weight: 500; }
+      font-size: 1.2em;
+      font-family: 'robotomedium'; }
   #passive_view #performance_graph {
     width: 100%;
     height: 21.5em; }
@@ -102,8 +125,6 @@ a {
     width: 100%;
     overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-top: #EEE 1px solid; }
     #passive_view #device_map #device_wrapper {
       overflow: auto;
@@ -121,7 +142,18 @@ a {
         text-align: center;
         font-size: 0.8em;
         position: relative;
-        top: 5em; }
+        top: 0; }
+      #passive_view #device_map .device .offline_symbol {
+        opacity: 0;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3.5em;
+        margin-bottom: 0.5em;
+        background-image: url("/public/images/close.svg");
+        background-position: center center;
+        background-repeat: no-repeat; }
 
 #active_view {
   position: relative;
@@ -136,42 +168,45 @@ a {
     #active_view #nav p {
       line-height: 2.5em;
       text-align: center;
-      font-weight: 500; }
+      font-family: 'robotomedium'; }
     #active_view #nav a {
       width: 2.5em;
       height: 2.5em;
       display: block;
-      background-image: url("/public/images/close.svg");
+      background-image: url("/public/images/back-arrow.svg");
       background-size: 70% 70%;
       background-position: center center;
       background-repeat: no-repeat;
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
       text-indent: -9999px; }
   #active_view #content #feed {
     background: #FFF;
     overflow-x: scroll;
     width: 100%;
-    height: calc(600px - 2.5em - 3.5em); }
+    height: calc(600px - 2.5em - 0em); }
     #active_view #content #feed .feed_item {
       border-bottom: #EEE 1px solid;
       font-size: 1.2em;
       padding: 0.75em 20% 0.75em 20%; }
-      #active_view #content #feed .feed_item h2, #active_view #content #feed .feed_item h3 {
+      #active_view #content #feed .feed_item h2, #active_view #content #feed .feed_item h3, #active_view #content #feed .feed_item p {
         margin-bottom: 0.5em;
         line-height: 1.2; }
-      #active_view #content #feed .feed_item h3 {
+      #active_view #content #feed .feed_item h3, #active_view #content #feed .feed_item p {
         font-size: 0.8em; }
       #active_view #content #feed .feed_item .timestamp {
         color: #AAA;
         font-size: 0.8em; }
+      #active_view #content #feed .feed_item.critical h2 {
+        color: #f15a24; }
       #active_view #content #feed .feed_item:first-child {
         font-size: 1.6em; }
         #active_view #content #feed .feed_item:first-child .timestamp {
           font-size: 0.8em; }
   #active_view #content #raw_data {
-    height: calc(3.5em - 2px);
+    display: none;
+    height: calc(0em - 2px);
     width: 100%;
     border-top: #CCC 2px solid;
     overflow: auto; }
@@ -183,16 +218,17 @@ a {
       padding-top: 0.5em; }
       #active_view #content #raw_data .data_point h2 {
         font-size: 0.8em;
-        font-weight: 500;
+        font-family: 'robotomedium';
         margin-bottom: 0.5em; }
       #active_view #content #raw_data .data_point .value {
         font-size: 2.5em;
-        font-weight: 700;
+        font-family: 'robotobold';
         margin-right: 0.1em; }
 
 #notification_bar {
   height: 2.5em;
-  width: 100%;
+  width: 30%;
+  margin-top: 1.8em;
   background-color: #efefef; }
   #notification_bar a {
     display: block;
@@ -202,19 +238,17 @@ a {
     height: 100%; }
   #notification_bar .alert_icon {
     display: none; }
-  #notification_bar.alert {
-    background-color: #f15a24; }
-    #notification_bar.alert a {
-      color: #FFF; }
-    #notification_bar.alert .alert_icon {
-      display: inline-block;
-      background: #FFF;
-      width: 1.25em;
-      height: 1.25em;
-      line-height: 1.25em;
-      border-radius: 1.25em;
-      margin-right: 0.5em;
-      color: #f15a24; }
+  #notification_bar.alert a {
+    color: #000; }
+  #notification_bar.alert .alert_icon {
+    display: inline-block;
+    background: #f15a24;
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+    border-radius: 1.25em;
+    margin-right: 0.5em;
+    color: #FFF; }
 
 @media (min-width: 800px) {
   #outer_container {
