@@ -12,10 +12,10 @@ html(lang="en")
         div(id="passive_view")
           div(id="performance_value")
             div
-              p(id="value") 93%
+              p(id="value") 100%
               p(id="caption") Overall broadband performance
             div
-              p(class="notification") A Samsung S5 mobile phone just connected to your network
+              p(class="notification") Your router is using a default password which isn't secure
               div(id="notification_bar")
                 a(href="#") #[span(class="message button") ]
         div(id="active_view")
@@ -24,8 +24,15 @@ html(lang="en")
           div(id="content")
             div(id="feed")
               div(class="feed_item critical")
-                h2 A Samsung S5 mobile phone connected to your network 0n 12/3/17, 07:04am
-                ul
-                  li OK
-                  li Block this device
-                a(href="#") Button
+                h2 Your router's control panel is using a password that is easy to guess
+                div(style="padding:0.5em; background:#EEE;")
+                  p(style="margin-bottom:0; overflow:auto; margin-bottom: 0.4em;")
+                    input(type="password" style="font-size:1em; margin-bottom:0; padding:0.25em; line-height:0; height:1em; font-family:'robotoregular'; width:calc(75% - 0.5em); float:left;" placeholder="Current password...")
+                div(style="padding:0.5em; background:#EEE;")
+                  p(style="margin-bottom:0; overflow:auto; margin-bottom: 0.4em;")
+                    input(type="password" style="font-size:1em; margin-bottom:0; padding:0.25em; line-height:0; height:1em; font-family:'robotoregular'; width:calc(75% - 0.5em); float:left;" placeholder="New password...")
+                div(style="padding:0.5em; background:#EEE;")
+                  p(style="margin-bottom:0; overflow:auto; margin-bottom: 0.4em;")
+                    input(type="password" style="font-size:1em; margin-bottom:0; padding:0.25em; line-height:0; height:1em; font-family:'robotoregular'; width:calc(75% - 0.5em); float:left;" placeholder="Confirm new password...")
+                div(class="button" style="padding:0.4em;")
+                  a(href="#" style="margin-left:2em; text-align:center; border-bottom:#000 1px solid; display:inline; float:right;") Save
