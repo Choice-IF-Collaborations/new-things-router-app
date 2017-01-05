@@ -167,6 +167,6 @@ $(window).load(function() {
   });
 
   setTimeout(function() {
-    createNotification("Find out more");
+    createNotification("Don't recognise this?");
   }, 0);
 });

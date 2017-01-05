@@ -84,13 +84,13 @@ a {
 #passive_view {
   width: 100%;
   height: calc(100%);
-  background: #FF0000;
+  background: #338e5e;
   position: relative; }
   #passive_view #performance_value {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 21.5em;
     color: #000;
     display: block;
@@ -102,12 +102,17 @@ a {
       color: #FFF; }
     #passive_view #performance_value div #value {
       font-size: 6em;
-      margin-bottom: 0.4em;
-      margin-top: 1em;
+      margin-bottom: 0.2em;
+      margin-top: 0.5em;
       font-family: 'robotomedium'; }
     #passive_view #performance_value div #caption {
-      font-size: 1.2em;
-      font-family: 'robotomedium'; }
+      font-size: 1.6em;
+      font-family: 'robotomedium';
+      margin-bottom: 3em; }
+    #passive_view #performance_value div .notification {
+      width: 50%;
+      line-height: 1.4em;
+      float: left; }
   #passive_view #performance_graph {
     width: 100%;
     height: 21.5em; }
@@ -164,7 +169,7 @@ a {
   #active_view #nav {
     height: 2.5em;
     width: 100%;
-    background: #efefef; }
+    background: #FFF; }
     #active_view #nav p {
       line-height: 2.5em;
       text-align: center;
@@ -183,23 +188,25 @@ a {
       text-indent: -9999px; }
   #active_view #content #feed {
     background: #FFF;
-    overflow-x: scroll;
-    width: 100%;
-    height: calc(600px - 2.5em - 0em); }
+    overflow-x: scroll; }
     #active_view #content #feed .feed_item {
-      border-bottom: #EEE 1px solid;
-      font-size: 1.2em;
+      font-size: 0.8em;
       padding: 0.75em 20% 0.75em 20%; }
       #active_view #content #feed .feed_item h2, #active_view #content #feed .feed_item h3, #active_view #content #feed .feed_item p {
+        font-size: 0.8em;
         margin-bottom: 0.5em;
         line-height: 1.2; }
       #active_view #content #feed .feed_item h3, #active_view #content #feed .feed_item p {
-        font-size: 0.8em; }
+        font-size: 0.6em; }
+      #active_view #content #feed .feed_item ul li {
+        font-size: 0.8em;
+        margin-bottom: 1em; }
       #active_view #content #feed .feed_item .timestamp {
         color: #AAA;
         font-size: 0.8em; }
       #active_view #content #feed .feed_item.critical h2 {
-        color: #f15a24; }
+        color: #000;
+        margin-bottom: 1.5em; }
       #active_view #content #feed .feed_item:first-child {
         font-size: 1.6em; }
         #active_view #content #feed .feed_item:first-child .timestamp {
@@ -226,14 +233,14 @@ a {
         margin-right: 0.1em; }
 
 #notification_bar {
-  height: 2.5em;
   width: 30%;
-  margin-top: 1.8em;
-  background-color: #efefef; }
+  background-color: #FFF;
+  float: right;
+  padding: 0.8em;
+  border-radius: 10px; }
   #notification_bar a {
     display: block;
     text-align: center;
-    line-height: 2.5em;
     width: 100%;
     height: 100%; }
   #notification_bar .alert_icon {
